@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Space_Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#ffa39d",
+                    "surface-container-lowest": "#0d0e11",
+                    "on-tertiary-container": "#4c3e00",
+                    "on-primary-fixed-variant": "#004492",
+                    "outline": "#8d909d",
+                    "error-container": "#93000a",
+                    "surface-container": "#1f1f23",
+                    "on-tertiary-fixed": "#221b00",
+                    "on-tertiary": "#3a3000",
+                    "on-background": "#e3e2e6",
+                    "surface": "#121316",
+                    "primary-fixed": "#d7e2ff",
+                    "on-surface-variant": "#c3c6d3",
+                    "on-secondary-fixed-variant": "#930015",
+                    "inverse-surface": "#e3e2e6",
+                    "primary-fixed-dim": "#acc7ff",
+                    "secondary-container": "#9b0117",
+                    "outline-variant": "#434751",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary": "#68000b",
+                    "tertiary": "#e9c400",
+                    "on-tertiary-fixed-variant": "#544600",
+                    "tertiary-container": "#c9a900",
+                    "primary-container": "#2c5ead",
+                    "surface-container-low": "#1a1b1e",
+                    "on-secondary-fixed": "#410004",
+                    "surface-variant": "#343538",
+                    "on-surface": "#e3e2e6",
+                    "inverse-primary": "#2a5dac",
+                    "on-primary": "#002f68",
+                    "inverse-on-surface": "#2f3033",
+                    "secondary-fixed-dim": "#ffb3ae",
+                    "background": "#121316",
+                    "surface-bright": "#38393c",
+                    "surface-tint": "#acc7ff",
+                    "surface-container-highest": "#343538",
+                    "primary": "#acc7ff",
+                    "tertiary-fixed": "#ffe16d",
+                    "tertiary-fixed-dim": "#e9c400",
+                    "surface-dim": "#121316",
+                    "secondary-fixed": "#ffdad7",
+                    "on-primary-container": "#cbdaff",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "secondary": "#ffb3ae",
+                    "surface-container-high": "#292a2d",
+                    "on-primary-fixed": "#001a40"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue"],
+                    "body": ["Space Grotesk"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .rarity-common { background: linear-gradient(135deg, #2c5ead 0%, #0d0e11 100%); }
+        .rarity-rare { background: linear-gradient(135deg, #ffb3ae 0%, #9b0117 100%); }
+        .rarity-legendary { background: linear-gradient(135deg, #e9c400 0%, #121316 100%); }
+        .terminal-bg { background-color: rgba(13, 14, 17, 0.95); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-950 flex flex-col h-full py-6 shadow-[4px_0px_24px_rgba(44,94,173,0.1)] z-50">
+<div class="px-6 mb-10">
+<h1 class="text-2xl font-black italic tracking-tighter text-blue-500 font-headline">BARRINHA</h1>
+<p class="text-[10px] tracking-widest text-slate-500 font-bold">MANAGEMENT TERMINAL</p>
+</div>
+<nav class="flex-1 space-y-2 px-3">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white font-bold bg-blue-600/20 border-r-4 border-blue-500 rounded-lg translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Players</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="sports_soccer">sports_soccer</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Teams</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_ind">assignment_ind</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Match Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-slate-900 rounded-xl">
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-blue-500/30" data-alt="close up professional headshot of a young male sports manager in a dark tech-wear jacket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC40KBGGRFupXssblDwKHyaJZph9TX5LOEWo3Meo7IrC0MdEpRX3jCOYkqs1AGO3OoWkiZBF7sTV7ez9BH3aBWUzxh-YEeMeQ-2f2RuBlmIUZ1PQyunI82tCoTi9VupeJIYbz8RDf6mDUT1VwtnZBUpcnR6xLKwrWBIpXfV1JajM392umGjpNKnei_kyVeS2GgOIKhSjTuP9jjPk2yJZ6xKE338sOLds9AwnxSC83XdEJBb0Xw65xGtx7oylvyag17PFBBxOrU_cTk"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-white truncate">COACH_ZERO</p>
+<p class="text-[10px] text-blue-400 uppercase tracking-tighter">Admin Access</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-slate-950/80 backdrop-blur-xl h-16 ml-64 flex justify-between items-center px-8">
+<div class="flex items-center bg-slate-900 px-4 py-2 rounded-full border border-slate-800">
+<span class="material-symbols-outlined text-slate-500 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-slate-300 w-64 font-body" placeholder="Search roster..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-400 hover:text-blue-300 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+</button>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-blue-500 transition-colors shadow-[0_4px_0_rgb(30,58,138)] active:translate-y-[2px] active:shadow-none">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                Man of the Match
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen grid grid-cols-12 gap-8 relative">
+<!-- Left Column: Smart Shuffle Controls -->
+<section class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 shadow-2xl relative overflow-hidden">
+<!-- Mascot Interjection -->
+<div class="absolute -top-4 -right-4 w-24 h-24 opacity-20">
+<img alt="Mascot Thumbs Up" class="w-full h-full object-contain" data-alt="vibrant colorful vector illustration of a cartoon soccer player mascot giving a thumbs up with a big smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbu1grnXyrrk9xjExx4QnRHt07Y9CiE_4CAI1UttHXUUjBlFz6IbSrsMWaF2Ont1xufPYXL889uc6D5veVBmCz0RkGn4-NeqnVPaberZPgfj5EK7QV3VtY_oCoXWCeTPQmR58I-pER2eHXqhJ7fxoX84i5fcu0EfMyutdptmeNLq5bhNl_udpkafSKDDElePLQ98BhEBrTDp_FZ6J24lhMuA_TKkapcGC5mCVnjmFRzK1kM6T_49V9V-C6tKQCuUwX8pWlHfqaMrI"/>
+</div>
+<h2 class="text-3xl font-headline font-black italic tracking-tighter text-primary mb-2">SMART SHUFFLE</h2>
+<p class="text-on-surface-variant font-label text-sm mb-8">Deploying advanced algorithms to balance the pitch.</p>
+<div class="space-y-6">
+<div>
+<label class="text-[10px] font-mono uppercase tracking-widest text-primary block mb-3">Shuffle Mode</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-primary-container text-on-primary-container p-4 rounded-xl border-b-4 border-on-primary-fixed-variant flex flex-col items-center gap-2 transition-all hover:translate-y-[-2px]">
+<span class="material-symbols-outlined text-2xl" data-icon="balance">balance</span>
+<span class="text-xs font-bold font-headline uppercase">Skill Balance</span>
+</button>
+<button class="bg-surface-container-high text-on-surface-variant p-4 rounded-xl border-b-4 border-outline flex flex-col items-center gap-2 transition-all hover:bg-secondary-container hover:text-white hover:border-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-2xl" data-icon="casino">casino</span>
+<span class="text-xs font-bold font-headline uppercase">Random Chaos</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-highest/50 p-4 rounded-xl">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-mono text-tertiary">MIN_SKILL_GAP</span>
+<span class="text-xs font-mono text-white">0.45</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-tertiary" type="range"/>
+</div>
+<button class="w-full bg-gradient-to-r from-primary-container to-primary py-5 rounded-xl text-on-primary font-black font-headline text-xl tracking-tighter shadow-[0_6px_0_#004492] hover:translate-y-[-2px] hover:shadow-[0_8px_0_#004492] active:translate-y-[4px] active:shadow-none transition-all flex items-center justify-center gap-3 group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform" data-icon="auto_fix_high" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+                        GENERATE TEAMS
+                    </button>
+</div>
+</div>
+<!-- SQL Overlay Terminal -->
+<div class="bg-slate-950 rounded-xl p-4 border border-blue-500/20 shadow-inner font-mono text-[11px] leading-relaxed">
+<div class="flex items-center gap-2 mb-3 border-b border-white/10 pb-2">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="ml-2 text-slate-500">LOG: query_engine_v2.0</span>
+</div>
+<div class="space-y-1 text-blue-400/80">
+<p><span class="text-purple-400">SELECT</span> * <span class="text-purple-400">FROM</span> active_roster;</p>
+<p><span class="text-slate-500">-- Found 15 players (Skill Range: 68-94)</span></p>
+<p><span class="text-purple-400">EXEC</span> balance_teams @teams=3, @weight='skill';</p>
+<p><span class="text-green-400">SUCCESS:</span> Team entropy optimized (0.0122ms)</p>
+<p class="animate-pulse">_</p>
+</div>
+</div>
+</section>
+<!-- Right Column: Resulting Teams -->
+<section class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Team 1: Royal Blue -->
+<div class="relative bg-surface-container rounded-xl overflow-hidden shadow-2xl border-l-8 border-primary">
+<div class="p-6 flex justify-between items-center bg-primary/10">
+<div>
+<h3 class="text-2xl font-headline font-black text-primary tracking-tighter uppercase italic">TEAM ROYAL BLUE</h3>
+<p class="text-[10px] font-mono text-on-surface-variant">AVERAGE SKILL: 88.4</p>
+</div>
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-primary text-[10px] flex items-center justify-center font-black">WIN% 64</div>
+</div>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+<!-- Player Cards -->
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-primary/30 text-center hover:bg-primary/5 transition-colors group cursor-pointer">
+<img alt="Player 1" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-primary group-hover:scale-110 transition-transform" data-alt="pixel art style avatar of a futsal player with a bandana and intense expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ2j8aJIYgQ6LK3dHvsQb6U4-SufXuZRIGylX6q0oj3FRIO2kTmTzttiRzoNNLv0bRvrjdOdNMitelHZTlXY-zuKxFAFNt6hT2QxrOXsL5r54TW443bL3QZJrfiXS5MqLYYP8ctXfgUyYcKU88NvqHg5gmGfSvmY8yn64NAstCmqC6Mn95cIuVde44mIZurIJHjYbWatynzzAf-NNwAfjDzFJVZPb4juztfNuyaMWJMr15Oj7SdfZ3AiSN2LcE18eBh16vecQW4hs"/>
+<p class="text-[10px] font-mono text-primary font-bold">GK</p>
+<p class="font-bold text-xs">V. VALDES</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 92</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-primary/30 text-center hover:bg-primary/5 transition-colors group cursor-pointer">
+<img alt="Player 2" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-primary" data-alt="stylized vector illustration avatar of a young athletic female soccer player with braided hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLKOTpRMFnC6elmj3GZPMnjFhXvc4_VKBB5y_RbBffQjLfptVE_mp9z36F_EZjgsfAEHBUcUl5v_gMK2BMhXc9IPFyuKM3Enl01RVZrMTD52XeMfYjqGPSsHlF1AD-7rPLAB4kQGcPuVtDNiBzCMmmAo8X_MlQZa1fHsQ4jY0v0mMkLtw3Ww8fgt6ThQNYXjH8veapT6ARK8gKMTrbdte-E9mvU4tPCTEXMySEWrnwQoKq4KKMO6pWXnKzVdbfpsy7MTPFkCzKud0"/>
+<p class="text-[10px] font-mono text-primary font-bold">FWD</p>
+<p class="font-bold text-xs">MARTA X</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 89</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-primary/30 text-center hover:bg-primary/5 transition-colors group cursor-pointer">
+<img alt="Player 3" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-primary" data-alt="cartoonish avatar of a bearded man in a blue sports jersey with a fierce look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaFqSOGtKMBAjusVWKhn0OBQ3NAGuj5DRcm8A7qymoAPRPkXhkmINuNeyaME2Y_yK-W2rEYEd9TKQh72fX8A5EKkLKpR889cdpA6-U7-Okwl5vcxHKHg-5AIJdYgg1RtOOSoW7F7ohRtkwpoRkHoS2t3uhJRACB8mIg0RXzUTLYMoBqmDb4-7dRezVE4TEtO_ue-zyPlKn5Xu5s1htu3feq7TEjXuahDlSD2TlOzRu5ldp2nh3mroN4V0CbrTkdnM9lvEefHVzp4k"/>
+<p class="text-[10px] font-mono text-primary font-bold">MID</p>
+<p class="font-bold text-xs">K. DEB</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 87</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-primary/30 text-center hover:bg-primary/5 transition-colors group cursor-pointer">
+<img alt="Player 4" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-primary" data-alt="stylized profile icon of a player wearing a high-tech tracking vest and sports headband" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD2_RFuAb4C5Iftb2abfCFPEmsmVQa2bji0oqS9SeKS3_v_8FE6HjY-OQe5cjotCCDToQ4gGIGl8OFS--4II5bS2oxJjp2QHchfMy3oEomdr7Nh1zvZvIgLfwpCeq-C74PnwaXI8Ez-OHQPANG_EgnzOmwBqZul0uMH3WNhAGAdw0CdZipS9pDEG8TAebdHueW_FkrJH-Kf6Hp3TVdd2Tkcde1oczZt9ZFGpHNELV4vyxa06HGUDeJ8ceGs9F6ELvM1PVMS2q408M"/>
+<p class="text-[10px] font-mono text-primary font-bold">DEF</p>
+<p class="font-bold text-xs">P. MALD</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 85</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-primary/30 text-center hover:bg-primary/5 transition-colors group cursor-pointer">
+<img alt="Player 5" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-primary" data-alt="dynamic vector avatar of a teenage soccer player smiling with sweat on forehead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkAjxAX_exy6DZ-sGtJK8xxRKppnMQ9WsSpuehJxyFZSv5I-yBRtUAmWCO91M-rSWVnVnHhIqixe3W7NyYJMnTu0leZZR1BvOutvPrz5rULE5zjhoBhhoH3EsrSEz3gsN4DwzfdJXzsvsDQHGi9ZJqwy4mZaqOuPpCq7KUrjhP3FsNl3GHIa7Ube7R8ejcQnZYHm_2VHBM-2oIapqp9VhL7ZVxOlwIeb1k7gOmzYTNN9JPa70M3YnmC1FxFz9vWRVGzclNPCBl2D4"/>
+<p class="text-[10px] font-mono text-primary font-bold">FWD</p>
+<p class="font-bold text-xs">R. FEN</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 89</p>
+</div>
+</div>
+</div>
+<!-- Team 2: King Red -->
+<div class="relative bg-surface-container rounded-xl overflow-hidden shadow-2xl border-l-8 border-secondary">
+<div class="p-6 flex justify-between items-center bg-secondary-container/10">
+<div>
+<h3 class="text-2xl font-headline font-black text-secondary tracking-tighter uppercase italic">TEAM KING RED</h3>
+<p class="text-[10px] font-mono text-on-surface-variant">AVERAGE SKILL: 87.9</p>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-mono text-secondary font-bold uppercase tracking-widest">Synergy High</span>
+</div>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+<!-- Player Cards -->
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-secondary/30 text-center hover:bg-secondary/5 transition-colors group cursor-pointer">
+<img alt="Player 6" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-secondary" data-alt="intense portrait avatar of a goalkeeper with gloves and charcoal markings under eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSclN8u_znZWs5bwqbmQlnlE-csBND3e_KZ0MqP3jXQKovhwJ3nRrW7KSGVzhO9HtyOhyqivOwf_l1Qx-zJBH9U4FmE3e5RRjZMU5H_SScgOYgA1obidqd8PLVe82SN_BTO8hlPmoexgr4PRf7o_d-0QqNJz2SQg56q2b_ZTia2xtcAA7hzbZjr4ZUzc3pAHcbMpeKYB5K4nWobSEFIaONtPDkRFP3vRJU2Q83IMTjpKD60TP7hKWDqmWPvNF61jzQsXT7w9v4fto"/>
+<p class="text-[10px] font-mono text-secondary font-bold">GK</p>
+<p class="font-bold text-xs">NEU_01</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 90</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-secondary/30 text-center hover:bg-secondary/5 transition-colors group cursor-pointer">
+<img alt="Player 7" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-secondary" data-alt="professional athletic avatar of a woman with long ponytail in a red sports kit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsasAu0OIi3O-5L6ZO7cfFg-bJsB3R9izbLN1svG-j9XtYfUI7RSzZX7tNBpAZIPszFjZGCOm5bO3fMt0HWFP2DiB1AgXGIt1cyrmRKucNi4e1TnktbQCmvT6I3MFldJ1FxO9wrO2tREoVpXujwJ3fHJ3ldigUSjvlHip327Yw8gY7k08iX45rZl_QZuoOxdwtpocA5-aOPomDrnkljzm7DsX4p10YfVoDWHi4gAnat2BVr-iB3p0iiQnCWP1hUgwtVGjXQjPEfHU"/>
+<p class="text-[10px] font-mono text-secondary font-bold">FWD</p>
+<p class="font-bold text-xs">ALEX_M</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 93</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-secondary/30 text-center hover:bg-secondary/5 transition-colors group cursor-pointer">
+<img alt="Player 8" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-secondary" data-alt="avatar of a player with a mohawk and expressive happy facial features" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPuk1ACjjwf-h-nRlIS5bMRCQhu80AzmznrhX4sVucvDSSBwVDwR9E_vVU9fply7Q_J3ikvRxDSNzNDJdyEjn1mIJwYLeH3WlTVn7wMURQ5YFqjpxbOHOlji1kxsJxbrbd6BtcGXYQpCLOcMZJ6N1aqZ4mFF5sY1JcZ2HxEk3IcPXsj8ENq6JqDWZMOmW1R2c7Kku2SkTfMoLzfaJDSRbGaD0l5tj94dAdUvx8u3ayIPofZjJzpYw8Mmdke2DRXf7Yyw01EqiFa6U"/>
+<p class="text-[10px] font-mono text-secondary font-bold">MID</p>
+<p class="font-bold text-xs">POG_6</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 84</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-secondary/30 text-center hover:bg-secondary/5 transition-colors group cursor-pointer">
+<img alt="Player 9" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-secondary" data-alt="stern but focused avatar of a veteran player with short graying hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrlW5zHvwMyVWfyM_pRSPK_urG4vZHIqNsx6D8vZBZwJQ5Ffj64_zcQzP08J6SCTKCnJv7dJc8sDiVHlxzpoqCSOWyyTWIbaPk-yjd75BW6UhUcNCHVXIPlUvSD4GlTzNmwy-tJv82ofcQVXPJH4l-fITUYNlmx5fjEflGQgaNm3tKMg6Ee1XAF4Q8_bmSfl0XCaZtGsQ5Uo4nm7QR4MMGB3VwDAWiqroFm0nbczd3JD9V0d301NbaxUFtMwScauz1NgDOef7Vgzo"/>
+<p class="text-[10px] font-mono text-secondary font-bold">DEF</p>
+<p class="font-bold text-xs">VIRG_V</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 86</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-secondary/30 text-center hover:bg-secondary/5 transition-colors group cursor-pointer">
+<img alt="Player 10" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-secondary" data-alt="close-up avatar of a fast-looking player with neon cleats visible in frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2TWb7yToDBUzRLvZTTCvm7w7W7v8NOZHmkFw9_c787lhLNlkzeZ_JYJKbRZ95wr54Y5jigQBWXuovw0TCo4gmj1uOP7AaTkbaiMlMbGDvCoAIEA3brR7vFkL_SG5TNaMSFyUw8ZigRgIpHBo6enC4P78_SrEERVOrPCmFA4T7wQIiPVvzHo8W4vY-zN5o-xH6LIZSoMBGwNWQzaD3M6hfOq1SrykDF-tGU7rC5WLmzpm1zJNWvHO8WHvJHUrkVpPlsQZIyNURPIk"/>
+<p class="text-[10px] font-mono text-secondary font-bold">FWD</p>
+<p class="font-bold text-xs">MBAP_Z</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 86</p>
+</div>
+</div>
+</div>
+<!-- Team 3: Crown Gold -->
+<div class="relative bg-surface-container rounded-xl overflow-hidden shadow-2xl border-l-8 border-tertiary">
+<div class="p-6 flex justify-between items-center bg-tertiary/10">
+<div>
+<h3 class="text-2xl font-headline font-black text-tertiary tracking-tighter uppercase italic">TEAM CROWN GOLD</h3>
+<p class="text-[10px] font-mono text-on-surface-variant">AVERAGE SKILL: 88.1</p>
+</div>
+<div class="flex items-center gap-2">
+<img alt="Crown" class="w-6 h-6" data-alt="shiny 3d rendered gold crown icon with blue jewels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoYjwEiq-RDX1FYm3nAXA2Us5g1vrOAXY2Ih1O1Qq0pYiulfltddzl1LbRuf6Xa7Nb1nHf6RFt-PbOyCXbUKwRp9qWN-mYtX2UsKZKK2t0gK9Sq7XE3cxHM1aYATdgwmTx_XQQWTrf8c5N3bufnz22O39ImNxmaNSyaAUb16xXBbvGwoxiRLIsOtlIM3La79YjJ9z-FeMkJ9t1_5Pka-lBRVmpTQvlDusXpj6DxTnSCwnYrVxQAGZb6DJLupZXDjONWMZFj6w8xUc"/>
+<span class="text-[10px] font-mono text-tertiary font-bold uppercase tracking-widest">Legacy Tier</span>
+</div>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+<!-- Player Cards -->
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-tertiary/30 text-center hover:bg-tertiary/5 transition-colors group cursor-pointer">
+<img alt="Player 11" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-tertiary" data-alt="legendary goalkeeper avatar with a golden glow around his silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgM3wBpz_BhG5ehh0k71hEd2vbNQXU1m4gDT2-Pu2nYrKOpaTtGCWjioZ8JucFUUkO6bePkNNcrpG1D0LwpCS4tAOE4EquMjKkEToh99qFjhgzX_llMAQHBPRnvPFWe0R0wkDG8tOxLkVPbFrMJzrCLT0UKbQgCYBGtsMgml2cSJmebyYVeMahWXdJ9LFqUQvhotH6Q4rtKgsnPs8uawUt28gPlPlgM9Ss1aSfPXrhIEUKBYp1RZORkvGEXsuunJ-rRFuVsZ_2HQw"/>
+<p class="text-[10px] font-mono text-tertiary font-bold">GK</p>
+<p class="font-bold text-xs">ALIS_N</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 88</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-tertiary/30 text-center hover:bg-tertiary/5 transition-colors group cursor-pointer">
+<img alt="Player 12" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-tertiary" data-alt="elite forward avatar with a cool calm expression wearing a premium gold kit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBm1QeUQxZePNBNPpy7pkFC_eRx6MDtt_Z0jTXbtgRZJ4NgnVVYi0yxe34ajRJoogLSSDokhpjop7nsDwkAhiyVlYWmaFep2SDSWstilVKMMJvYHxneQ3bJGLR2fAq3Ha7T_SBb0OY4DeXXrMuWlBIv1iofpy1OdmTUDn7dwbSSfB-5xuxUY-iLoPpRftgMMYPmGMk9mwdI8VpMbeXB1mFHVgok6COAQUOcCyrIKgYUwKsyeDXtzpvzZZzzZVHxsP2ZZlGPLZKRaM"/>
+<p class="text-[10px] font-mono text-tertiary font-bold">FWD</p>
+<p class="font-bold text-xs">LEO_M</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 95</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-tertiary/30 text-center hover:bg-tertiary/5 transition-colors group cursor-pointer">
+<img alt="Player 13" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-tertiary" data-alt="strong defensive midfielder avatar with a protective face mask and determined eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpiK7ZwJ90o7ZRj2xhtzecvs9BVw_y2kqZTt2shWnmVjefikq2CkYoKqaN-XHd5ZQf6xxANVKvtbESFBWxD7Njclus-pgM9ONZRXN5qHY9D8NbdoYph9zYmGYYev4WyhXccQTKQ-dNSqJRtK8346zqG6CBAUyE4M4Y3747PIvwNsylnvuG1eZGdRbCAQg8rFUVhAHXm2-g2AiYOGOgH0G0LYwXEPoovYTNkh8VZVnZbgg3khg1RRBmGv4z0q8vSZ-lz4wIv2wARJM"/>
+<p class="text-[10px] font-mono text-tertiary font-bold">MID</p>
+<p class="font-bold text-xs">MOD_10</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 82</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-tertiary/30 text-center hover:bg-tertiary/5 transition-colors group cursor-pointer">
+<img alt="Player 14" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-tertiary" data-alt="agile defender avatar with high-top athletic socks and athletic build" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQVkgUhVIXWSHdvYRu5E4BfJBpO9yhlSWgrlIzNghGZm1RWkL8NTex6fVidf6TgyK5zE6NxBYwAwInjmYCAAhxi6gNbRASQk_CZApSwAM7y4en4Wtx2RYMDu3hfxenA5mgjnBHHB6nU2qZf2R0ZuPrbDYjRNwXg7YUmCdZgI_jonIyfbnr6VaxQgq4Mx8QVnt6cwXbzn3oUMLDwVPfSRroYQdWbugGkUq2EvdUwEaxTEvvAs01fD1VWXKxf1f_2Q3VfcdmY_tR0pU"/>
+<p class="text-[10px] font-mono text-tertiary font-bold">DEF</p>
+<p class="font-bold text-xs">ALABA_D</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 87</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-xl border-b-2 border-tertiary/30 text-center hover:bg-tertiary/5 transition-colors group cursor-pointer">
+<img alt="Player 15" class="w-12 h-12 rounded-full mx-auto mb-2 border-2 border-tertiary" data-alt="powerful striker avatar with short buzzed hair and a confident grin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYT-d9Lr1Salq7qMUu7p9pugWKj75Pf62Uq6mqn45kBwpVYD0sK8N-C0wnOtF7KQtfNiMYu3J33gMqnJudXiQwEAxz82pGkVFmJPpPAFRTUrOI1oarySHZ-xIiAPtroqwK94o7XtNhvlcbbmjFvHC2fZBI0r2fzuNiuBWfFgg1o-u3jhoBz6yHalx9UzRy9HIz827IERg37YdaPaGH2sbESdzgEoNyboGrS5zAPkRK_QJ4355pIttIAAcpXpZB1f-lnkpqgkB0QE"/>
+<p class="text-[10px] font-mono text-tertiary font-bold">FWD</p>
+<p class="font-bold text-xs">HAAL_X</p>
+<p class="text-[10px] text-on-surface-variant font-mono">OVR: 89</p>
+</div>
+</div>
+</div>
+<!-- Floating Mascot Summary -->
+<div class="flex items-center gap-6 bg-surface-container-high/40 p-6 rounded-2xl border border-outline-variant/10 backdrop-blur-md">
+<div class="w-20 h-20 bg-tertiary/20 rounded-full flex items-center justify-center border-4 border-tertiary shadow-[0_0_20px_rgba(233,196,0,0.3)]">
+<img alt="Smiling Ronaldinho Mascot" class="w-12 h-12" data-alt="cool cartoon mascot with sunglasses and a thumbs up in front of a futsal goal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfI4FkOXIp1dJv47-fmZlX1D1wkk3Gkl27wyLKphbCkgd7-PanZLQvIXQmDkBqgw_C7pm-NTGnlsp1rjYcSuGZfh5iu5e6ePGfzrDd8B7cIM-ZR0oebc_5PIaBLynOk8yqe5kXTLLp9LqtLYW4VofHvrH4Bv9yf-8fHI8sNtagPvpCLE_uauq2wcG-7vEbxzCos4EUFckFOd_Rm_NTNPiIEOfW50JUMT58JPoJQV1Jt-pxGe2ZrX1EFYodekvP4c3dyVEKU6H4sYU"/>
+</div>
+<div>
+<h4 class="text-xl font-headline font-bold text-white">"Balanced like a pro!"</h4>
+<p class="text-on-surface-variant text-sm">The Skill Gap is less than 0.5% across all teams. Prepare for an epic session.</p>
+</div>
+<div class="ml-auto">
+<button class="bg-surface-container p-4 rounded-xl border border-outline-variant hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-125 transition-transform" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for quick action (Suppressed as per rules on detail/subpages, but this is a primary dashboard feature, so kept for utility context) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined text-3xl font-bold" data-icon="add">add</span>
+<span class="absolute right-20 bg-surface-container px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity border border-outline-variant">Add New Player</span>
+</button>
+</body></html>

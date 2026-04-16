@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BARRINHA - Match Analytics &amp; Attendance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Space+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#ffa39d",
+                        "surface-container-lowest": "#0d0e11",
+                        "on-tertiary-container": "#4c3e00",
+                        "on-primary-fixed-variant": "#004492",
+                        "outline": "#8d909d",
+                        "error-container": "#93000a",
+                        "surface-container": "#1f1f23",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-tertiary": "#3a3000",
+                        "on-background": "#e3e2e6",
+                        "surface": "#121316",
+                        "primary-fixed": "#d7e2ff",
+                        "on-surface-variant": "#c3c6d3",
+                        "on-secondary-fixed-variant": "#930015",
+                        "inverse-surface": "#e3e2e6",
+                        "primary-fixed-dim": "#acc7ff",
+                        "secondary-container": "#9b0117",
+                        "outline-variant": "#434751",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#68000b",
+                        "tertiary": "#e9c400",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "tertiary-container": "#c9a900",
+                        "primary-container": "#2c5ead",
+                        "surface-container-low": "#1a1b1e",
+                        "on-secondary-fixed": "#410004",
+                        "surface-variant": "#343538",
+                        "on-surface": "#e3e2e6",
+                        "inverse-primary": "#2a5dac",
+                        "on-primary": "#002f68",
+                        "inverse-on-surface": "#2f3033",
+                        "secondary-fixed-dim": "#ffb3ae",
+                        "background": "#121316",
+                        "surface-bright": "#38393c",
+                        "surface-tint": "#acc7ff",
+                        "surface-container-highest": "#343538",
+                        "primary": "#acc7ff",
+                        "tertiary-fixed": "#ffe16d",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "surface-dim": "#121316",
+                        "secondary-fixed": "#ffdad7",
+                        "on-primary-container": "#cbdaff",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "secondary": "#ffb3ae",
+                        "surface-container-high": "#292a2d",
+                        "on-primary-fixed": "#001a40"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Space Grotesk"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mono-data { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(52, 53, 56, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .pedestal-glow {
+            box-shadow: 0 0 40px rgba(233, 196, 0, 0.15);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0d0e11; }
+        ::-webkit-scrollbar-thumb { background: #434751; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-950 flex flex-col h-full py-6 shadow-[4px_0px_24px_rgba(44,94,173,0.1)] z-50">
+<div class="px-6 mb-10">
+<div class="text-2xl font-black italic tracking-tighter text-blue-500 font-['Epilogue']">BARRINHA</div>
+<div class="text-[10px] tracking-[0.2em] text-slate-500 font-bold mt-1 font-['Space_Grotesk']">MANAGEMENT TERMINAL</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center px-3 py-3 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-3 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">groups</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Players</span>
+</a>
+<a class="flex items-center px-3 py-3 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">sports_soccer</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Teams</span>
+</a>
+<a class="flex items-center px-3 py-3 text-white font-bold bg-blue-600/20 border-r-4 border-blue-500 transition-transform Active: translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-3">assignment_ind</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Attendance</span>
+</a>
+<a class="flex items-center px-3 py-3 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">leaderboard</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Match Analytics</span>
+</a>
+<a class="flex items-center px-3 py-3 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-['Space_Grotesk'] tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="px-6 pt-6 border-t border-slate-900">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-slate-800">
+<img alt="Barrinha Futsal Logo" class="w-full h-full object-cover" data-alt="minimalist sleek avatar of a football club manager wearing a tech headset in dark cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKBSOKYQFvw3FCBY91e-tpYbcbxixI_SvpRunCpllfKmqHCnyMPX2MOFI9mFTdw0FIq5Lx0tF8A-I-adaADcyQyOYdUiF5cDVOI9UpcVoicFzopFCDZXJJU-MyVJPez1Z4fsclWJUYnmnKcN8ZnCjP1KWTiay4KAUYKs3udkleyO7BmC3n3dF1yXL5P7BsicVKYSZIUhEmjhMcFZyTnNtVfMQJIyWIwiyU_zEGWEl75b0KffznBVAAYggohhc-3EgRP44F0te1X1Y"/>
+</div>
+<div>
+<div class="text-sm font-bold text-white">ADMIN_01</div>
+<div class="text-[10px] text-blue-400 uppercase tracking-widest">Active Session</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 h-16 ml-64">
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-slate-900 border-none rounded-lg py-1.5 pl-10 pr-4 text-xs font-mono text-blue-400 focus:ring-1 focus:ring-blue-500 w-64 placeholder:text-slate-600" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 bg-primary-container hover:bg-blue-600 text-on-primary-container px-4 py-2 rounded-lg text-xs font-bold transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined text-sm">stars</span>
+                Man of the Match
+            </button>
+<div class="w-px h-6 bg-slate-800 mx-2"></div>
+<button class="text-slate-400 hover:text-blue-300 transition-all">
+<span class="material-symbols-outlined">campaign</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<div class="p-8 space-y-8">
+<!-- Hero Section: MVP Hall of Fame -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 bg-surface-container-low rounded-xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-tertiary">bubble</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<h2 class="font-headline text-2xl font-black italic tracking-tight uppercase">MVP Hall of Fame</h2>
+</div>
+<div class="flex items-end justify-around gap-4 mt-12">
+<!-- 2nd Place -->
+<div class="flex flex-col items-center gap-4">
+<div class="w-24 h-24 rounded-full border-4 border-slate-700 p-1 relative">
+<img alt="MVP 2" class="w-full h-full rounded-full object-cover" data-alt="digital 3d avatar of a futsal player with stylish hair and jersey in a gaming portrait style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIn8AprQJSYY43k17d1MfT2cA27p-gTekp62ZHFsx-zO3upBPH916z5CMLouIpW3cTf8M_Q5_5OdDssLo9Yvk21295EuGS8goouzwgyGa4r7qKD7cKhc7QscgBkrc69dz3G9L9dX1c-Y7-99Hqx8dPLrmORtW85CbKlcUV0tCbk683dY2RUXmQYRtU0DmBZPUxkIvosSgOaWrvbbPtLQznun_bGJgo8WOx7RWd1N8WFaORO5-1q2Pn1-0bvme1JZ8ypw0f89IPnl0"/>
+<div class="absolute -bottom-2 -right-2 bg-slate-700 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white border-2 border-surface">2</div>
+</div>
+<div class="bg-slate-800 w-32 h-24 rounded-t-xl flex flex-col items-center justify-center p-4">
+<div class="text-xs font-mono text-slate-400">VITINHO</div>
+<div class="text-lg font-mono font-bold text-white">42 G</div>
+</div>
+</div>
+<!-- 1st Place (Winner) -->
+<div class="flex flex-col items-center gap-4 -translate-y-8">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-2 animate-bounce">emoji_events</span>
+<div class="w-32 h-32 rounded-full border-4 border-tertiary p-1 relative pedestal-glow">
+<img alt="MVP 1" class="w-full h-full rounded-full object-cover" data-alt="digital 3d avatar of a star futsal player with intense focus wearing a gold-accented jersey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC14TBtW9_RH7NWhFc-HYYUcq-G_7CWATHrF7vTaNwkCQ-D5V7tlpcIJvFOjYbZovHm_BKy6ee8tbTWS68qx-E4737Nmg68mAv5u0ZuvhKF0fl3W5s1WX3EH-1VPoAZCahWL5UT2wHIkHpuez0_s9gZSbwV3_s7FntaEmDPamVAZGavLu8FkvS15fmGqD2lHhh7gfDY7N2kA2F_5qG3YE7ybIYtgiznO5d2Hpo2aN9y1wEzJlVbNO3EayLQYCTX2NoHXKaugK1dBUA"/>
+<div class="absolute -bottom-2 -right-2 bg-tertiary w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-on-tertiary border-2 border-surface">1</div>
+</div>
+<div class="bg-tertiary/20 backdrop-blur-md border-t-2 border-tertiary w-40 h-32 rounded-t-xl flex flex-col items-center justify-center p-4">
+<div class="text-sm font-mono font-bold text-tertiary">RICARDINHO</div>
+<div class="text-2xl font-mono font-black text-white">58 G</div>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="flex flex-col items-center gap-4">
+<div class="w-20 h-20 rounded-full border-4 border-orange-900 p-1 relative">
+<img alt="MVP 3" class="w-full h-full rounded-full object-cover" data-alt="digital 3d avatar of a determined athlete with short hair and sports gear in cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhcJd4QWQxMawstz3jdeTNcVHDuLic3r8lMWoeOCpuUlcA8fJTIIwJHMbCIJY1mHdm1n05pbyEju6s4-x5gDrW6ubbqbjx4YTXVh39jenffzPh7MrBc3Kv25mZ2hLjSLl0S0kP3b228XMREPH55jnw7AmEzVVSP5On5Aiofwi7pn3YYR230sbO2CCMAf_ktgDdw9rUjPwVYCs0C14SCkBxy0jBB0EQupea44pHmj_kPUVIxNq3AHiNzZQmzlTCt8MLH22HEXloc3g"/>
+<div class="absolute -bottom-2 -right-2 bg-orange-900 w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-surface">3</div>
+</div>
+<div class="bg-slate-900 w-28 h-20 rounded-t-xl flex flex-col items-center justify-center p-4">
+<div class="text-[10px] font-mono text-slate-500">DUDU</div>
+<div class="text-base font-mono font-bold text-white">36 G</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Match Logs (Console Style) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 flex flex-col h-full max-h-[400px]">
+<div class="p-4 bg-surface-container-high flex justify-between items-center border-b border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="text-[10px] font-mono font-bold tracking-widest text-on-surface-variant">LIVE MATCH LOGS</span>
+</div>
+<span class="material-symbols-outlined text-sm text-slate-500">terminal</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 font-mono text-[11px] space-y-2 leading-relaxed text-slate-400">
+<div class="flex gap-2"><span class="text-slate-600">[19:42:01]</span> <span class="text-primary">EVENT_GOAL:</span> RICARDINHO (Assist: VITINHO)</div>
+<div class="flex gap-2"><span class="text-slate-600">[19:44:12]</span> <span class="text-secondary">FOUL_YELLOW:</span> DUDU (Aggressive tackle)</div>
+<div class="flex gap-2"><span class="text-slate-600">[19:48:55]</span> <span class="text-tertiary">EVENT_SUB:</span> IN: THIAGO / OUT: MARCOS</div>
+<div class="flex gap-2"><span class="text-slate-600">[19:50:22]</span> <span class="text-primary">EVENT_GOAL:</span> VITINHO (Unassisted)</div>
+<div class="flex gap-2"><span class="text-slate-600">[19:55:00]</span> <span class="text-slate-500">SYSTEM_LOG:</span> Match period ended. Syncing stats...</div>
+<div class="flex gap-2"><span class="text-slate-600">[20:01:10]</span> <span class="text-primary">EVENT_GOAL:</span> RICARDINHO (Assist: DUDU)</div>
+<div class="flex gap-2"><span class="text-slate-600">[20:05:34]</span> <span class="text-error">MATCH_ERROR:</span> Clock paused by referee.</div>
+<div class="flex gap-2"><span class="text-slate-600">[20:08:12]</span> <span class="text-primary">EVENT_GOAL:</span> THIAGO (Assist: RICARDINHO)</div>
+</div>
+</div>
+</section>
+<!-- Attendance Terminal Section -->
+<section class="bg-surface-container rounded-xl overflow-hidden border-t-4 border-primary shadow-2xl">
+<div class="p-6 flex justify-between items-center bg-surface-container-high/50">
+<div>
+<h3 class="font-headline font-black text-xl italic tracking-tighter uppercase text-white">Attendance Terminal</h3>
+<p class="text-xs font-mono text-slate-500 mt-1">SELECT * FROM match_roster WHERE date = CURRENT_DATE;</p>
+</div>
+<div class="flex gap-3">
+<div class="px-4 py-2 bg-slate-900 rounded-lg flex items-center gap-2 border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-mono text-slate-300">SERVER: UP</span>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse text-left">
+<thead class="bg-surface-container-highest text-slate-400 font-mono text-[11px] uppercase tracking-[0.2em]">
+<tr>
+<th class="p-4 pl-8">Player</th>
+<th class="p-4">Rarity</th>
+<th class="p-4 text-center">Check-in Status</th>
+<th class="p-4">Absence Reason</th>
+<th class="p-4 pr-8 text-right">Commit</th>
+</tr>
+</thead>
+<tbody class="font-mono text-sm">
+<!-- Row 1 -->
+<tr class="bg-surface-container-lowest hover:bg-primary/5 transition-colors border-b border-outline-variant/5">
+<td class="p-4 pl-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Player" class="w-full h-full object-cover" data-alt="stylized blocky avatar portrait of a soccer player with vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANFy0x30-HPIGpmD_ac7zHBh9M6F_bTZLS4eZWbNg0F5I5RdkJIjljvCAZhUBH_09phxY8kW4lcLDWi8xcvlv0sgb_C_Ot-4yWGi5FN0gR4CZydRJXbCE8MuD3H8xz7JiFJJNa72YVLJkXPdnUzw2ipAq8PY8IrFAxIzscmGN_dvmNBVRQHIWZyKwq6D_PK2n9rwIWc-tQ6Hl-zWfqZQRAmfycd3L3YOP3jWWSHDPlUQg5FjCUiKCQDFw3HntfpvHbeYPShNKmBnM"/>
+</div>
+<span class="font-bold text-white">Ricardinho</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r from-tertiary to-amber-600 text-on-tertiary uppercase">Legendary</span>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</td>
+<td class="p-4 text-slate-500 italic">---</td>
+<td class="p-4 pr-8 text-right">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">sync_saved_locally</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low hover:bg-primary/5 transition-colors border-b border-outline-variant/5">
+<td class="p-4 pl-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center overflow-hidden grayscale">
+<img alt="Missing Player" class="w-full h-full object-cover" data-alt="minimalist blocky avatar of a player with a sad expression to represent absence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAACzFm8rxyfLDmFgRB0d9JWDGmr3oTPhKAAg1ruOAjpRH1Gl4Xx84l5AqIPMJnAP8JJh6cJGfBXvp-KG0p-tR_U2ysxkf0-tHMaB_shNhEHZ1kE-Zv3Uf_9M695Pkb6wn0wbo_gdjYRmzOebCVmpHtE31Vd7aqFwmru_gsTTRl5HPUQB79vb4If7DHOys26arANW9T_tJ9CFJ7SxUa4jAgdIU8cnQ7opQhEPqkH5SXutppDn192lMM_m-hb3A-8h46ZUmQrNRzQyw"/>
+</div>
+<span class="font-bold text-slate-500">Marquinhos</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-900/40 text-blue-400 uppercase">Common</span>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</td>
+<td class="p-4">
+<select class="bg-slate-900 border-none rounded text-xs text-secondary font-mono focus:ring-1 focus:ring-secondary w-full max-w-[150px]">
+<option>Injured</option>
+<option selected="">Working</option>
+<option>Travel</option>
+<option>Family</option>
+</select>
+</td>
+<td class="p-4 pr-8 text-right">
+<button class="text-slate-600 hover:text-white transition-colors"><span class="material-symbols-outlined">sync_saved_locally</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface-container-lowest hover:bg-primary/5 transition-colors border-b border-outline-variant/5">
+<td class="p-4 pl-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-purple-900/30 flex items-center justify-center overflow-hidden">
+<img alt="Player" class="w-full h-full object-cover" data-alt="3d stylized blocky gaming avatar of an athletic character with purple accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKwPsidbpmK-lbj9K92wj_mVv1ikSkD1UwcJMMFexcZ2qQTlq4r-5DpasBChIBtdQQIhaBVZhf5YbJ13zzt-SVPF9tlDY0GEhzknZj7QdUg4ij5Aq7bwjGf79BROoKBPwjikgsvYDdWqFMNkm_yTxinHOXrJqQpW7w1JaVXIhYFdWO94_LwU3e_yet5i1harhNhNoqpyyFtI656tX65djS1CSSjFqupidxb-CvnWyccgPnTRo6KAZfrPBNbvoVrdLhk97GploeTNY"/>
+</div>
+<span class="font-bold text-white">Vitinho</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r from-purple-500 to-primary text-white uppercase">Epic</span>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</td>
+<td class="p-4 text-slate-500 italic">---</td>
+<td class="p-4 pr-8 text-right">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">sync_saved_locally</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low hover:bg-primary/5 transition-colors">
+<td class="p-4 pl-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center overflow-hidden grayscale">
+<img alt="Missing Player" class="w-full h-full object-cover" data-alt="minimalist blocky avatar of a player in silhouette to signify absence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmfW3IJybHuAJHY5pX3zyTwHemd162th1pfdkfWu8jGDTYjFjQJuZVfBGgZlucL57TtSkZeQ0LdZBRtd4xssTnu-iCLsmXKnp1JdJ2FDiA582CmPaf9RGTPn83O3iTV8W32O6S6mzmxSfwxzd8AZwSKHihRel1iEipNHgb0IIsSbtF6OcjkVrs4696UBU1J22Ty3hLUDF6ZB5B_EGwcj7B98d-YrjZ5SeAFPD0gZwG6asuCrYF9R4_2wPy5AI5tdrskouvSPVEauY"/>
+</div>
+<span class="font-bold text-slate-500">Dudu</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-900/40 text-orange-400 uppercase">Rare</span>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</td>
+<td class="p-4">
+<select class="bg-slate-900 border-none rounded text-xs text-secondary font-mono focus:ring-1 focus:ring-secondary w-full max-w-[150px]">
+<option selected="">Injured</option>
+<option>Working</option>
+<option>Travel</option>
+<option>Family</option>
+</select>
+</td>
+<td class="p-4 pr-8 text-right">
+<button class="text-slate-600 hover:text-white transition-colors"><span class="material-symbols-outlined">sync_saved_locally</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-lowest flex justify-between items-center text-[10px] font-mono text-slate-600">
+<div>TOTAL_ENTRIES: 42 | SHARD: BARRINHA_01</div>
+<div class="flex gap-4">
+<span class="text-primary cursor-pointer hover:underline">PAGE_PREV</span>
+<span class="text-white bg-primary/20 px-2 rounded">01</span>
+<span class="text-primary cursor-pointer hover:underline">PAGE_NEXT</span>
+</div>
+</div>
+</section>
+<!-- Bottom Mascot Interjection -->
+<div class="flex justify-end pr-8 pointer-events-none select-none opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="flex items-center gap-4 -mb-8">
+<div class="text-right">
+<div class="bg-surface-container-highest p-3 rounded-2xl rounded-br-none text-[10px] font-mono leading-tight text-white mb-2">
+                            DATA INTEGRITY<br/>VERIFIED BY<br/>BARRINHA_BOT
+                        </div>
+</div>
+<div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center border-4 border-surface overflow-hidden">
+<img alt="Mascot" class="w-full h-full object-cover" data-alt="funny smiling blocky character with a helmet and headset giving a thumbs up in 3d render style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANvzMEWO8NDVjiLRcE2wFaimMky0EddvjNK5kkDadPYTzp-YDksEDcz7vuHGHWQccOOqXUQzJ3Hd1QH5yh40ZNvRhm7dMUDPzPP1vR6ngQOmAYgXV6pUKsuHxjnxJIoifW7AYCGUGiAbcmhYpyFrZQXQMl64Wa9pcA0_hT6YUOP7tE9nZOTDdrfwOOUdTKTzIdbxHMPRewT916rR6Xs5JixzemWeIc0mE3Xifbc4A0QGFMles1IA1ZWCqrPCfM9_FXjDJSpR2GNfU"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

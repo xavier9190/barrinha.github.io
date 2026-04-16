@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BARRINHA - Management Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,700;0,900;1,900&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#ffa39d",
+                    "surface-container-lowest": "#0d0e11",
+                    "on-tertiary-container": "#4c3e00",
+                    "on-primary-fixed-variant": "#004492",
+                    "outline": "#8d909d",
+                    "error-container": "#93000a",
+                    "surface-container": "#1f1f23",
+                    "on-tertiary-fixed": "#221b00",
+                    "on-tertiary": "#3a3000",
+                    "on-background": "#e3e2e6",
+                    "surface": "#121316",
+                    "primary-fixed": "#d7e2ff",
+                    "on-surface-variant": "#c3c6d3",
+                    "on-secondary-fixed-variant": "#930015",
+                    "inverse-surface": "#e3e2e6",
+                    "primary-fixed-dim": "#acc7ff",
+                    "secondary-container": "#9b0117",
+                    "outline-variant": "#434751",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary": "#68000b",
+                    "tertiary": "#e9c400",
+                    "on-tertiary-fixed-variant": "#544600",
+                    "tertiary-container": "#c9a900",
+                    "primary-container": "#2c5ead",
+                    "surface-container-low": "#1a1b1e",
+                    "on-secondary-fixed": "#410004",
+                    "surface-variant": "#343538",
+                    "on-surface": "#e3e2e6",
+                    "inverse-primary": "#2a5dac",
+                    "on-primary": "#002f68",
+                    "inverse-on-surface": "#2f3033",
+                    "secondary-fixed-dim": "#ffb3ae",
+                    "background": "#121316",
+                    "surface-bright": "#38393c",
+                    "surface-tint": "#acc7ff",
+                    "surface-container-highest": "#343538",
+                    "primary": "#acc7ff",
+                    "tertiary-fixed": "#ffe16d",
+                    "tertiary-fixed-dim": "#e9c400",
+                    "surface-dim": "#121316",
+                    "secondary-fixed": "#ffdad7",
+                    "on-primary-container": "#cbdaff",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "secondary": "#ffb3ae",
+                    "surface-container-high": "#292a2d",
+                    "on-primary-fixed": "#001a40"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue"],
+                    "body": ["Space Grotesk"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .rarity-legendary { background: linear-gradient(135deg, #00ced1 0%, #e9c400 100%); }
+        .rarity-epic { background: linear-gradient(135deg, #DA28D2 0%, #121316 100%); }
+        .elixir-bar { box-shadow: 0 0 10px rgba(172, 199, 255, 0.3); }
+        .sql-syntax-keyword { color: #acc7ff; }
+        .sql-syntax-func { color: #e9c400; }
+        .sql-syntax-table { color: #ffb3ae; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary-fixed overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-950 flex flex-col py-6 z-50 shadow-[4px_0px_24px_rgba(44,94,173,0.1)] font-['Space_Grotesk'] tracking-tight">
+<div class="px-6 mb-10">
+<h1 class="text-2xl font-black italic tracking-tighter text-blue-500 font-['Epilogue']">BARRINHA</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">MANAGEMENT TERMINAL</p>
+</div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white font-bold bg-blue-600/20 border-r-4 border-blue-500 translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Players</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span>Teams</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">assignment_ind</span>
+<span>Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Match Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white transition-colors hover:bg-slate-800/50" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-slate-900 rounded-xl">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container">
+<img alt="Barrinha Futsal Logo" class="w-full h-full object-cover" data-alt="minimalist futsal player avatar profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG4xlxTTPFWmC_atD-CohUhc6Z6dD67LNDgUQV17AiTL2OaeHhRY4MC9pMERDkBxGg6zVK9Iv_m1H_0dWXTqU3fmtaKitUCGbr-QcCaQ0FMCNiNg21gvrGUYxmhdJmdMMRH3QhZxHaMe4zNqaDWMG8954f-3TJD4qMN5xLf9SnJcMSqWfafatmFFhVndaioM7XkV6YF2kpcabNnwsy3yrUm2U_O4Km73GPRGvilU0y0twWiH5xIdcGkOn_u-ujWW3S0d_rkT8ony0"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-white uppercase tracking-tighter">Terminal Admin</span>
+<span class="text-[10px] text-blue-400 font-mono tracking-tight">ID: BRR_9921</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-slate-950/80 backdrop-blur-xl flex justify-between items-center px-8 h-16 ml-64 font-['Space_Grotesk']">
+<div class="flex items-center gap-4 bg-slate-900/50 px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-blue-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-mono w-64 text-on-surface-variant" placeholder="Search terminal..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-slate-400 hover:text-blue-300 transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined">campaign</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="bg-tertiary text-on-tertiary px-4 py-1.5 rounded-lg font-headline font-black italic text-sm shadow-[0_4px_0_#9a8200] active:translate-y-[2px] active:shadow-[0_2px_0_#9a8200] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                MAN OF THE MATCH
+            </button>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen bg-surface">
+<!-- Hero Stats Section: Player Cards -->
+<section class="mb-10">
+<div class="flex items-end justify-between mb-6">
+<div>
+<h2 class="font-headline font-black text-4xl italic text-primary-fixed-dim leading-none tracking-tight">ACTIVE ROSTER</h2>
+<p class="font-mono text-xs text-blue-400 mt-2 tracking-widest uppercase">Query: players.roster WHERE status = 'available'</p>
+</div>
+<!-- Mascot -->
+<div class="relative group">
+<div class="absolute -top-16 -left-20 bg-surface-container-high p-3 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity border-2 border-primary duration-300">
+<p class="text-xs font-mono">"Bota pra jogar!"</p>
+<div class="absolute bottom-[-8px] right-4 w-4 h-4 bg-surface-container-high border-b-2 border-r-2 border-primary rotate-45"></div>
+</div>
+<img alt="Mascot" class="w-16 h-16 grayscale hover:grayscale-0 cursor-pointer transition-all" data-alt="stylized vector illustration of a cartoon soccer player with a toothy gap grin and wild hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBat8PMz3TXIz1SIdnhZYwttU384zkvE0mJFSJpJMHvCLyGr1LG2neFbS-JIyMcFujHm2m5WR-E2RRQNnp56At_9jo_7qmpXBRwHRl8ekf5orcAliu2_dwqo_gJAb58Gg6xe80jWZH-IlCddG3rgMZGyU5HraxgOrtu4_VYZ58jdQEdtrhi-2zPdL7lb468U33VfR8nn3KqQGBMR42Sm_Ctwm1PG6D-tC_FhD0Ax92MnmNMyG_k2Y361cyGOQTGA8UmSBtzDvniTFU"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Player Card 1: Legendary -->
+<div class="relative rarity-legendary p-[3px] rounded-xl overflow-hidden group">
+<div class="bg-surface-container-highest rounded-[calc(1.5rem-3px)] overflow-hidden h-full">
+<div class="h-48 relative overflow-hidden bg-slate-800">
+<img alt="Ronaldinho" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="dynamic close up of a legendary Brazilian soccer player celebrating, intense stadium lights, vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7jmMFTiquOwWiOtXk0YhbhbRe8eRZAzu2cYx4DAV-fQjbI7lZrLUbhHvFT8jwyrc4b6c3TezGW0XdB8PGvQ50R_xd9MRWKGYPhmyeAX6KjZcWqUh4NxZbL9CroO7zESQIGbmoB6j9bR3PI0DVUQeq9l7JJ-PxWTA6YJVJvLuIEUNNdjxMzzcOX98QWw_vsLlAylRyM6LdS31TDb-bNiw2pV3HzKFQB7EFKB76LjgGLo5LreNVbM6_TUAPaLKJcUirGXhTjBLemCM"/>
+<div class="absolute top-3 left-3 bg-tertiary px-2 py-1 rounded font-headline font-black text-[10px] text-on-tertiary">LEGENDARY</div>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface-container-highest to-transparent h-24"></div>
+</div>
+<div class="p-5 relative">
+<h3 class="font-headline font-black text-2xl italic mb-1">RONALDINHO</h3>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-low px-2 py-0.5 rounded text-[10px] font-mono text-primary uppercase">Wing</span>
+<span class="bg-surface-container-low px-2 py-0.5 rounded text-[10px] font-mono text-tertiary uppercase">Capt</span>
+</div>
+<!-- Skill Bars (Elixir Style) -->
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Passing</span> <span>99</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full rarity-legendary elixir-bar" style="width: 99%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Dribble</span> <span>100</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full rarity-legendary elixir-bar" style="width: 100%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Player Card 2: Epic -->
+<div class="relative rarity-epic p-[3px] rounded-xl overflow-hidden group">
+<div class="bg-surface-container-highest rounded-[calc(1.5rem-3px)] overflow-hidden h-full">
+<div class="h-48 relative overflow-hidden bg-slate-800">
+<img alt="Falcão" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="professional futsal player in action during match, dynamic indoor lighting, dramatic composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnsJvpbPy2mc5i-v_kQ09GpYeMz1zSyFQBkrjT8_KutYfhv8aX4t7wPoeLSYg6PLHRSKnV_KeadDKg2lXHOwWSl3jfWlqZe5JjXhuzr80RT8-IjRHNWYemx-M5hx4V5wLs0GJdBfz24bOfFIK5BGeK58dUSmOTjtIT9AYoeXvAQ7W9GkdvIhRUHM2rzEn0JBV01Bj1voLijyI65uk646d5dVHVIrOxEGBPsNFUcp7XfobtHPujnFGPYD0JpwIk-2ChCUJmFa-tXQY"/>
+<div class="absolute top-3 left-3 bg-secondary px-2 py-1 rounded font-headline font-black text-[10px] text-white">EPIC</div>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface-container-highest to-transparent h-24"></div>
+</div>
+<div class="p-5 relative">
+<h3 class="font-headline font-black text-2xl italic mb-1">FALCÃO</h3>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-low px-2 py-0.5 rounded text-[10px] font-mono text-primary uppercase">Fix</span>
+<span class="bg-surface-container-low px-2 py-0.5 rounded text-[10px] font-mono text-secondary uppercase">Ace</span>
+</div>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Defense</span> <span>88</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary elixir-bar" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Finishing</span> <span>96</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary elixir-bar" style="width: 96%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Player Card 3 -->
+<div class="relative bg-surface-container-low p-1 rounded-xl group border-2 border-outline-variant/20 hover:border-primary/50 transition-colors">
+<div class="bg-surface-container-highest rounded-lg overflow-hidden h-full">
+<div class="h-48 relative overflow-hidden bg-slate-800">
+<img alt="Romário" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="futsal striker focusing on ball, cinematic lighting, gritty texture, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDgLwkFuY7HK2fKrtzjcxObzQLywFXo1e7BCNX2pxW93yAJ00E-ZS3F9lAkbbNPB8P8RrQMJeRTH30g1UERhvP7JJgctJ6hRrkwug5OTMDGotM0dxnjLAeuejaMEM0SOnthdeAFiWVoXuYJcVUnchj8Xd-GLOA3BJ3UhvgvDQSsBL4KiIpd9qqNPX06kCPl0-1Al1il3zMrYMoQzbpGz8BTm7054qq2ThlTkWlKqd3dB3NAZfSM28P9Fw9U48lKVNMo7nxwWnm5Uw"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface-container-highest to-transparent h-24"></div>
+</div>
+<div class="p-5 relative">
+<h3 class="font-headline font-black text-2xl italic mb-1">ROMÁRIO</h3>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-low px-2 py-0.5 rounded text-[10px] font-mono text-on-surface-variant uppercase">Pivot</span>
+</div>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Positioning</span> <span>99</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary elixir-bar" style="width: 99%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Finishing</span> <span>95</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary elixir-bar" style="width: 95%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Player Card 4 -->
+<div class="relative bg-surface-container-low p-1 rounded-xl group border-2 border-outline-variant/20 hover:border-primary/50 transition-colors">
+<div class="bg-surface-container-highest rounded-lg overflow-hidden h-full">
+<div class="h-48 relative overflow-hidden bg-slate-800">
+<img alt="Neymar" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="young agile soccer player performing a trick, blurred stadium crowd, sharp detail, high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEMtBB0E4Duwd8mn5PWQZstidCu-DChgiOMxbA3t0CrseAUldgvpQeNvpI2KyRNUXo1Xit9-_fV7jTSbCx4UBfL3KDfY2dKYM1ioS1tPK1z1SauM0lQ17GV9n9MCp2G7SNYhbAVWxIi1Kr_47Jm0mYIhRREEKo1kHZj2grKjXvWY5cwnlI2FUVWZV3DHOSOGN3P_-iOBp4VG3SH18eYLNFs5HHofm_JgKdGax2G_vo-YDytM8kQpRiY_TudZusJDrARW1qi9KbeF0"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface-container-highest to-transparent h-24"></div>
+</div>
+<div class="p-5 relative">
+<h3 class="font-headline font-black text-2xl italic mb-1">NEYMAR</h3>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-low px-2 py-0.5 rounded text-[10px] font-mono text-on-surface-variant uppercase">Ala</span>
+</div>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Skill</span> <span>97</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary elixir-bar" style="width: 97%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-mono mb-1 text-on-surface-variant uppercase"><span>Stamina</span> <span>82</span></div>
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary elixir-bar" style="width: 82%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- Team Generator Module -->
+<section class="col-span-12 lg:col-span-7 bg-surface-container-low p-8 rounded-xl shadow-xl">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline font-black text-2xl italic tracking-tight text-white uppercase">Team Generator</h2>
+<span class="font-mono text-xs text-blue-400 bg-blue-900/20 px-3 py-1 rounded-full">v4.2-STABLE</span>
+</div>
+<div class="bg-slate-950 p-6 rounded-lg mb-8 border border-outline-variant/30 font-mono text-sm overflow-hidden">
+<div class="flex gap-4 mb-4">
+<span class="text-slate-600">01</span>
+<p><span class="sql-syntax-keyword">SELECT</span> * <span class="sql-syntax-keyword">FROM</span> <span class="sql-syntax-table">roster</span></p>
+</div>
+<div class="flex gap-4 mb-4">
+<span class="text-slate-600">02</span>
+<p><span class="sql-syntax-keyword">WHERE</span> availability = <span class="text-tertiary">'TRUE'</span></p>
+</div>
+<div class="flex gap-4">
+<span class="text-slate-600">03</span>
+<p><span class="sql-syntax-keyword">ORDER BY</span> <span class="sql-syntax-func">skill_balance</span>() <span class="sql-syntax-keyword">LIMIT</span> 2 <span class="sql-syntax-table">teams</span>;</p>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-6 items-center">
+<div class="flex-1 space-y-4 w-full">
+<div class="bg-surface-container-highest p-4 rounded-xl flex justify-between items-center">
+<span class="font-bold text-sm">Balanced Algorithm</span>
+<div class="w-12 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-4 rounded-xl flex justify-between items-center">
+<span class="font-bold text-sm">Force Captain Split</span>
+<div class="w-12 h-6 bg-slate-800 rounded-full relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-slate-500 rounded-full"></div>
+</div>
+</div>
+</div>
+<button class="w-full md:w-auto px-10 py-6 bg-primary text-on-primary-fixed font-headline font-black text-xl italic rounded-xl shadow-[0_6px_0_#2c5ead] active:translate-y-[4px] active:shadow-[0_2px_0_#2c5ead] transition-all flex flex-col items-center gap-2">
+<span>SHUFFLE TEAMS</span>
+<span class="font-mono text-[10px] font-normal tracking-widest opacity-70">EXE_COMMAND_04</span>
+</button>
+</div>
+</section>
+<!-- Attendance Tracker -->
+<section class="col-span-12 lg:col-span-5 bg-surface-container-low p-8 rounded-xl shadow-xl">
+<h2 class="font-headline font-black text-2xl italic tracking-tight text-white mb-6 uppercase">Attendance Tracker</h2>
+<div class="space-y-2">
+<div class="grid grid-cols-12 px-4 py-2 text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">
+<div class="col-span-6">Player Name</div>
+<div class="col-span-4">Status</div>
+<div class="col-span-2">Action</div>
+</div>
+<!-- Attendance Row 1 -->
+<div class="grid grid-cols-12 items-center px-4 py-3 bg-surface-container-highest rounded-lg transition-all hover:bg-slate-700/30">
+<div class="col-span-6 font-bold text-sm">Alex 'The Wall'</div>
+<div class="col-span-4">
+<span class="font-mono text-[10px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">AVAILABLE</span>
+</div>
+<div class="col-span-2 flex justify-end">
+<button class="w-8 h-8 rounded-lg bg-primary-container text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+</div>
+</div>
+<!-- Attendance Row 2 -->
+<div class="grid grid-cols-12 items-center px-4 py-3 bg-surface-container-lowest rounded-lg transition-all hover:bg-slate-700/30">
+<div class="col-span-6 font-bold text-sm">Ricardo Mendes</div>
+<div class="col-span-4">
+<span class="font-mono text-[10px] px-2 py-0.5 rounded bg-secondary-container/20 text-secondary">INJURED</span>
+</div>
+<div class="col-span-2 flex justify-end">
+<button class="w-8 h-8 rounded-lg bg-slate-800 text-slate-500 flex items-center justify-center cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">block</span>
+</button>
+</div>
+</div>
+<!-- Attendance Row 3 -->
+<div class="grid grid-cols-12 items-center px-4 py-3 bg-surface-container-highest rounded-lg transition-all hover:bg-slate-700/30">
+<div class="col-span-6 font-bold text-sm">Gustavo G.</div>
+<div class="col-span-4">
+<span class="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-500">WORKING</span>
+</div>
+<div class="col-span-2 flex justify-end">
+<button class="w-8 h-8 rounded-lg bg-primary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+</div>
+</div>
+<!-- Attendance Row 4 -->
+<div class="grid grid-cols-12 items-center px-4 py-3 bg-surface-container-lowest rounded-lg transition-all hover:bg-slate-700/30">
+<div class="col-span-6 font-bold text-sm">Vitor 'The Fixer'</div>
+<div class="col-span-4">
+<span class="font-mono text-[10px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">AVAILABLE</span>
+</div>
+<div class="col-span-2 flex justify-end">
+<button class="w-8 h-8 rounded-lg bg-primary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Match Analytics Log -->
+<section class="col-span-12 bg-surface-container-low p-8 rounded-xl shadow-xl mt-6">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="font-headline font-black text-2xl italic tracking-tight text-white uppercase leading-none">Match Analytics</h2>
+<div class="h-px flex-1 bg-gradient-to-r from-outline-variant/50 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- MVP Card -->
+<div class="bg-surface-container-highest p-6 rounded-xl border-l-4 border-tertiary relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="flex items-start justify-between relative">
+<div>
+<p class="font-mono text-[10px] text-tertiary mb-1 uppercase tracking-widest">Match MVP (Golden Glow)</p>
+<h3 class="font-headline font-black text-2xl italic text-white uppercase">Ronaldinho</h3>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-mono text-3xl font-bold text-tertiary">08</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Assist Multiplier</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Match Indicator 1 -->
+<div class="bg-surface-container-highest p-6 rounded-xl border-l-4 border-primary relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-mono text-[10px] text-primary mb-1 uppercase tracking-widest">Team Chemistry</p>
+<h3 class="font-headline font-black text-2xl italic text-white uppercase">Elite Tier</h3>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-mono text-3xl font-bold text-primary">84%</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Success Pass Rate</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Match Indicator 2: Bad Game -->
+<div class="bg-surface-container-highest p-6 rounded-xl border-l-4 border-secondary relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-mono text-[10px] text-secondary mb-1 uppercase tracking-widest">Low Performance Indicator</p>
+<h3 class="font-headline font-black text-2xl italic text-white uppercase">Bad Match</h3>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-mono text-3xl font-bold text-secondary">0.2</span>
+<span class="font-mono text-[10px] text-on-surface-variant">Defensive Recovery Log</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-surface p-4 rounded-lg border border-outline-variant/20 font-mono text-xs text-slate-500">
+<p class="mb-1 text-primary-fixed-dim">[LOG] 20:45:12 - Team A vs Team B Match Analysis Complete.</p>
+<p class="mb-1 text-on-surface-variant">[LOG] 20:45:15 - Tracking player positions in zone 3: HIGH INTENSITY DETECTED.</p>
+<p class="mb-1 text-on-secondary-container">[WARN] 20:46:00 - Player 'Ricardo' fatigue levels rising. Recommended Sub.</p>
+<p class="text-tertiary">[COMMIT] 20:47:00 - Data points synced to master cloud storage successfully.</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating UI elements for context -->
+<div class="fixed bottom-6 right-6 flex flex-col gap-4">
+<button class="bg-primary text-on-primary-fixed w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</body></html>
